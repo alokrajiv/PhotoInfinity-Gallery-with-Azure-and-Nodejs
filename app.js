@@ -31,18 +31,9 @@ passport.use(new BasicStrategy(
 ));
 
 var routeMain = require('./routes/index');
-var routeUser = require('./routes/user');
-var routePost = require('./routes/post');
-var routeComment = require('./routes/comment');
 
 app.use('/', routeMain);
-app.use('/api/user', routeUser);
-app.use('/api/post',passport.authenticate('basic', { session: false }), routePost);
-app.use('/api/comment',passport.authenticate('basic', { session: false }), routeComment);
 
-//Questions NOT USED ANYMORE!
-var questions = require('./routes/questions');
-app.use('/questions', questions);
 
 
 /// catch 404 and forwarding to error handler
