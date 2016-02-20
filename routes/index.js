@@ -1,14 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../models/index');
 
 /* GET home page. */
 router.get('/', function (req, res) {
     res.redirect('/static/');
 });
 
-router.get('/admin', function (req, res) {
-    res.redirect('/static/');
+router.get('/test', function (req, res) {
+    var UserModel = require('../models/user.js');
+    UserModel.find({},function(err, data){
+        res.json(data); 
+    })
 });
 
 
