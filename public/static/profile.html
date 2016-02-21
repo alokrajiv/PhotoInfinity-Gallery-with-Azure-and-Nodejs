@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Hypemonk: Profile</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="css/normalize.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/ico" href="favicon.png">
+</head>
+<body>
+		
+<!--MAIN WRAPPER FOR THE BODY (REQUIRED FOR THE SIDEBAR TO WORK) !sidebar-->
+<div id="wrapper" class="toggled main">
+
+<!--Sidebar would go here if we need it on this page !sidebar-->
+
+<!--./Sidebar-->
+	
+<!--CONTENT WRAPPER FOR SIDEBAR (REQUIRED FOR SIDEBAR TO WORK) !sidebar-->
+<div id="page-content-wrapper" class="main-content">
+
+
+<!--Navbar-->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		
+		<!--for mobile-->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><strong>HYPEMONK&nbsp;</strong></a>
+		</div><!--./navbar-header-->
+		
+		<!--navbar content-->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right" style="margin-top:8px">
+				<li><button class="btn btn-link" onclick="toggleLoginForm()" style="text-decoration: none"><span><img src="img/monk.png"></span>&nbsp;<strong>LOG IN</strong></button></li>
+			</ul><!--./nav navbar-nav navbar-right-->
+		</div><!--./Navbar-collapse-->
+		
+	</div><!--./Container-fluid-->
+</nav>
+<!--./Navbar-->
+
+
+<!--Jumbotron | NOTE: polyart-gray.png is not under CC license-->
+<div class="jumbotron" style="text-align: center; background-image: url(img/polyart-gray.png); background-size: cover;" >
+	<div style="padding: 100px" id="jumbotron-content-wrapper">
+		<h1 style="color: white">Showcase, get hyped and find <br> what you have been looking for!</h1>
+		
+		<!--Login/Signup | TODO: implement FORM-->
+		<div hidden class="well col-centered" style="width: 50%; margin-top:50px; background-color: #d3d3d3" id="login-signup-form">
+			
+			<!--Tabs-->
+			<button type="button" id="tab_login" class="btn btn-link" style="margin-right: 50px; color: #dd4814; text-decoration:none"><h3><strong>LOG IN</strong></h3></button>
+			<button type="button" id="tab_signup" class="btn btn-link" style="margin-left: 50px; color: #dd4814; text-decoration:none"><h3><strong>SIGN UP</strong></h3></button>
+			<hr width="90%" style="height:2px;border:none;color:#gray;background-color:gray;"/>
+			
+			<!--login form-->
+			<div id="login-form" style="margin: 50px">
+				<div class="input-group">
+					<div class="input-group-addon" style="background: #dd4814"><span class="glyphicon glyphicon-envelope" style="color: white"></span></div>
+					<input type="email" class="form-control" id="email_input" placeholder="Email">
+				</div>
+				<br>
+				<div class="input-group">
+					<div class="input-group-addon" style="background: #dd4814"><span class="glyphicon glyphicon-lock" style="color: white"></span></div>
+					<input type="password" class="form-control" id="password_input" placeholder="Password">
+				</div>
+				<br>
+				<div class="btn-group" role="group">
+					<button type="submit" class="btn btn-primary">LOG IN</button>
+					<button type="cancel" onclick="hideLoginForm()" class="btn btn-default">CANCEL</button>
+				</div>
+			</div>
+			
+			<!--signup form-->
+			<div hidden id="signup-form" style="margin: 50px">
+				<div class="input-group">
+					<div class="input-group-addon" style="background: #dd4814"><span class="glyphicon glyphicon-envelope" style="color: white"></span></div>
+					<input type="email" class="form-control" id="email_input" placeholder="Email">
+				</div>
+				<br>
+				<div class="input-group">
+					<div class="input-group-addon" style="background: #dd4814"><span class="glyphicon glyphicon-lock" style="color: white"></span></div>
+					<input type="password" class="form-control" id="password_input" placeholder="Password">
+				</div>
+				<div class="input-group">
+					<div class="input-group-addon" style="background: #dd4814"><span class="glyphicon glyphicon-lock" style="color: white"></span></div>
+					<input type="password" class="form-control" id="password_repeat_input" placeholder="Confirm Password">
+				</div>
+				<br>
+				<div class="btn-group" role="group">
+					<button type="submit" class="btn btn-primary">SIGN UP</button>
+					<button type="cancel" onclick="hideLoginForm()" class="btn btn-default">CANCEL</button>
+				</div>
+			</div>
+		</div><!--./well-->
+
+		<!--./Login/Signup-->
+		
+	</div>
+</div>
+<!--./Jumbotron-->
+
+
+<!--jQuery-->
+<script src="js/jquery-2.1.4.js"></script>
+<!--Core bootstrap JS (works with jQuery)-->
+<script src="js/bootstrap.js"></script>
+<script>
+	
+	// ADD SLIDEDOWN ANIMATION TO DROPDOWN //
+	$('.dropdown').on('show.bs.dropdown', function(e){
+		$(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+	});
+	
+	// ADD SLIDEUP ANIMATION TO DROPDOWN //
+	$('.dropdown').on('hide.bs.dropdown', function(e){
+		$(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+	});
+	
+	// Toggles dropdown
+	$('.dropdown-toggle').dropdown();
+</script>
+</body>
+</html>
+	

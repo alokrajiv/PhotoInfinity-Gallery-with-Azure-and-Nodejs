@@ -1,0 +1,315 @@
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+li.footer-item{
+  margin: 0 0 10px 0;
+}
+
+#cat_button{
+    position: fixed;
+    top: 50%;
+    left: -5px;
+}
+
+/*Thumbnail*/
+
+.content{
+        margin: 20px;
+        height: 200px;
+        width: 200px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        background-size: 100% 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px){
+
+    .content{
+        margin: 20px;
+        height: 300px;
+        width: 300px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        background-size: 100% 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+}
+
+.content-caption{
+   background-color: rgba(255,255,255,0.6);
+   height: 30%;
+   margin-top: 70%;
+}
+
+.content button{
+    margin-top: -10%; 
+    margin-left: 5%; 
+    background: -webkit-linear-gradient(left top, #ED1C24 , #F58453 ); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right,  #ED1C24 , #F58453); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right,  #ED1C24 , #F58453); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right,  #ED1C24 , #F58453); /* Standard syntax */
+    border-color: white;
+    color: white;
+}
+
+.content-heading{
+    margin-top: -5px;
+    padding-right: 5%;
+    float: right;
+}
+
+.content-tags{
+    margin-top: 8%;
+    text-align: center;
+}
+
+/*Custom hexagon modal*/
+.modal-content{
+    border-radius: 0px;
+    margin: 173.21px 0;
+    background-color: rgba(255,255,255,0.8);
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0);
+    -moz-box-shadow: 0 5px 15px rgba(0,0,0,0);
+    -o-box-shadow: 0 5px 15px rgba(0,0,0,0);
+    box-shadow: 0 5px 15px rgba(0,0,0,0);
+    border: 0px;
+}
+.modal-content:before,
+.modal-content:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 300px solid transparent;
+    border-right: 300px solid transparent;
+}
+.modal-content:before {
+    bottom: 100%;
+    border-bottom: 173.20px solid rgba(255,255,255,0.8);
+}
+.modal-content:after {
+    top: 100%;
+    width: 0;
+    border-top: 173.20px solid rgba(255,255,255,0.8);
+}
+.modal-header{
+    text-align: center;
+}
+.modal-backdrop{
+    background-color: rgba(0,0,0,0.4);
+}
+
+/*Navbar elements*/
+.navbar-element{
+    margin: 15px 10px 0 10px;
+    color: white;
+    font-size: 17px;
+}
+
+.noti-icon{
+    font-size: 20px; 
+    margin: 0 5px 0 5px; 
+    color: rgba(255,255,255,0.8);
+}
+
+.noti-badge{
+    font-size: 13px; 
+    margin: -10px 0 0 -15px;
+    /*experimental*/
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+}
+
+.noti-badge p{
+    /*experimental*/
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+/*signup elements*/
+.usertype_creator{
+    color: #dd4814;
+}
+
+/*signup form elements*/
+#user_settings label{
+    font-size: 18px;
+    margin-bottom:-3px;
+    margin-top: 15px;
+}
+
+/*Circle buttons by http://bootsnipp.com/snippets/featured/circle-button*/
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+/*Sidebar CSS*/
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+  
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 180px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 180px;
+    width: 0;
+    height: 100%;
+    margin-left: -180px;
+    overflow-y: auto;
+    background: #d3d3d3;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 180px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 0px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -180px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 180px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #dd4814;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:0px) {
+    #wrapper {
+        padding-left: 180px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 180px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 0px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 180px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

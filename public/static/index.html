@@ -1,22 +1,465 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-
-  <title>Artifacts</title>
-  <meta name="description" content="Artifacts">
-  <meta name="author" content="alokrajiv">
-
-  
-
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+<title>Hypemonk</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/ico" href="favicon.png">
 </head>
-
 <body>
-  <h1>HELLO WORLD</h1>
-  <h3>-Artifacts Team</h3>
+	
+<!--MAIN WRAPPER FOR THE BODY (REQUIRED FOR THE SIDEBAR TO WORK) !sidebar-->
+<div id="wrapper" class="toggled main">
+
+<!--Sidebar !sidebar-->
+<div id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+		<li class="sidebar-brand"><a href="#">Categories</a></li>
+		<li><a href="#">Anime & Manga</a></li>
+		<li><a href="#">Videos & Film</a></li>
+		<li><a href="#">Music</a></li>
+		<li><a href="#">Writing</a></li>
+		<li><a href="#">Comics</a></li>
+		<li><a href="#">Drawing & Painting</a></li>
+		<li><a href="#">Animation</a></li>
+		<li><a href="#">Podcast</a></li>
+		<li><a href="#">Games</a></li>
+		<li><a href="#">Photography</a></li>
+		<li><a href="#">Comedy</a></li>
+		<li><a href="#">Science</a></li>
+		<li><a href="#">Education</a></li>
+		<li><a href="#">Craft & DIY</a></li>
+		<li><a href="#">Dance & Theater</a></li>
+	</ul>
+</div>
+<!--./Sidebar-->
+
+<!--CONTENT WRAPPER FOR SIDEBAR (REQUIRED FOR SIDEBAR TO WORK) !sidebar-->
+<div id="page-content-wrapper" class="main-content">
+
+<!--Navbar-->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		
+		<!--for mobile-->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><strong>HYPEMONK&nbsp;</strong></a>
+		</div><!--./navbar-header-->
+		
+		<!--navbar content-->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right" style="margin-top:8px">
+				<li><button class="btn btn-link" onclick="toggleLoginForm()" style="text-decoration: none"><span><img src="img/monk.png"></span>&nbsp;<strong>LOG IN</strong></button></li>
+			</ul><!--./nav navbar-nav navbar-right-->
+		</div><!--./Navbar-collapse-->
+		
+	</div><!--./Container-fluid-->
+</nav>
+<!--./Navbar-->
+
+<!--Jumbotron-->
+<div class="jumbotron" style="text-align: center; background-image: url(img/polyart-gray.png); background-size: cover; padding-bottom: 24px" >
+	<div style="padding: 0px" id="jumbotron-content-wrapper">
+		<h1 style="color: white; font-size: 50px;">Showcase, get hyped and find <br> what you have been looking for!</h1>
+		
+		<!--Login/Signup | TODO: implement FORM-->
+		<div hidden class="well col-centered" style="width: 50%; margin-top:50px; background-color: #d3d3d3" id="login-signup-form">
+			
+			<!--Tabs-->
+			<button type="button" id="tab_login" class="btn btn-link" style="margin-right: 50px; color: #dd4814; text-decoration:none"><h3><strong>LOG IN</strong></h3></button>
+			<button type="button" id="tab_signup" class="btn btn-link" style="margin-left: 50px; color: #dd4814; text-decoration:none"><h3><strong>SIGN UP</strong></h3></button>
+			<hr width="90%" style="height:2px;border:none;color:#gray;background-color:gray;"/>
+			
+			<!--login form-->
+			<div id="login-form" style="margin: 50px">
+				<div class="input-group">
+					<div class="input-group-addon" style="background: #dd4814"><span class="glyphicon glyphicon-envelope" style="color: white"></span></div>
+					<input type="email" class="form-control" id="email_input" placeholder="Email">
+				</div>
+				<br>
+				<div class="input-group">
+					<div class="input-group-addon" style="background: #dd4814"><span class="glyphicon glyphicon-lock" style="color: white"></span></div>
+					<input type="password" class="form-control" id="password_input" placeholder="Password">
+				</div>
+				<br>
+				<div class="btn-group" role="group">
+					<button type="submit" class="btn btn-primary">LOG IN</button>
+					<button type="cancel" onclick="hideLoginForm()" class="btn btn-default">CANCEL</button>
+				</div>
+			</div>
+			
+			<!--signup form-->
+			<div hidden id="signup-form" style="margin: 50px">
+				<div class="input-group">
+					<div class="input-group-addon" style="background: #dd4814"><span class="glyphicon glyphicon-envelope" style="color: white"></span></div>
+					<input type="email" class="form-control" id="email_input" placeholder="Email">
+				</div>
+				<br>
+				<div class="input-group">
+					<div class="input-group-addon" style="background: #dd4814"><span class="glyphicon glyphicon-lock" style="color: white"></span></div>
+					<input type="password" class="form-control" id="password_input" placeholder="Password">
+				</div>
+				<div class="input-group">
+					<div class="input-group-addon" style="background: #dd4814"><span class="glyphicon glyphicon-lock" style="color: white"></span></div>
+					<input type="password" class="form-control" id="password_repeat_input" placeholder="Confirm Password">
+				</div>
+				<br>
+				<div class="btn-group" role="group">
+					<button type="submit" class="btn btn-primary">SIGN UP</button>
+					<button type="cancel" onclick="hideLoginForm()" class="btn btn-default">CANCEL</button>
+				</div>
+			</div>
+		</div><!--./well-->
+
+		<!--./Login/Signup-->
+		
+	</div>
+</div>
+<!--./Jumbotron-->
+	
+<!--TODO: Implement FORM classes-->
+<!--Search Bar-->
+<div class="container col-md-6 col-centered">
+	<div class="input-group">
+		<div class="input-group-addon" style="background: #dd4814"><img src="img/monk.png"></div>
+		<input type="text" class="form-control" placeholder="Search" style="background: #E8E8E8">
+		<div class="input-group-addon">filter by</div>
+		<select class="form-control">
+			 <option>Most viewed</option>
+			 <option>Most Recent</option>
+			 <option>Featured</option>
+		</select>
+	</div>
+</div><!--./<container-->
+<!--./Search Bar-->
+
+<!--Seperator-->
+<hr width="90%" style="height:2px;border:none;color:#gray;background-color:gray;"/>
+<!--./Seperator-->
+
+<!--Thumbnails-->
+<!--TODO: Make thumbnails dynamic-->
+<div class="container">
+	<div class="col-md-12" style="margin: 20px 40px 20px 40px;">
+		<!--Thumbnail child, please give the class "content" and "content caption"-->
+		<!--Images will be rescaled to 300 x 300-->
+		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-1.jpg)">
+			<!--Preview icon that will toggle the modal-->
+			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
+			<!--Content details go here-->
+			<div class="content-caption">
+				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
+				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
+				<!--heading-->
+				<div class="content-heading">
+					<h2>Hypesong</h2><!--Max length: 15 characters-->
+				</div>
+				<!--Tags-->
+				<div class="content-tags"><!--tags need to have limits-->
+					<a href="#">#hype</a>
+					<a href="#">#song</a>
+				</div>
+			</div>
+			<!--./content-caption-->
+		</div>
+		<!--./Thumbnail-child-->
+		<!--Thumbnail child, please give the class "content" and "content caption"-->
+		<!--Images will be rescaled to 300 x 300-->
+		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-2.jpg)">
+			<!--Preview icon that will toggle the modal-->
+			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
+			<!--Content details go here-->
+			<div class="content-caption">
+				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
+				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
+				<!--heading-->
+				<div class="content-heading">
+					<h2>Hypesong</h2><!--Max length: 15 characters-->
+				</div>
+				<!--Tags-->
+				<div class="content-tags"><!--tags need to have limits-->
+					<a href="#">#hype</a>
+					<a href="#">#song</a>
+				</div>
+			</div>
+			<!--./content-caption-->
+		</div>
+		<!--./Thumbnail-child-->
+		<!--Thumbnail child, please give the class "content" and "content caption"-->
+		<!--Images will be rescaled to 300 x 300-->
+		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-3.jpg)">
+			<!--Preview icon that will toggle the modal-->
+			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
+			<!--Content details go here-->
+			<div class="content-caption">
+				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
+				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
+				<!--heading-->
+				<div class="content-heading">
+					<h2>Hypesong</h2><!--Max length: 15 characters-->
+				</div>
+				<!--Tags-->
+				<div class="content-tags"><!--tags need to have limits-->
+					<a href="#">#hype</a>
+					<a href="#">#song</a>
+				</div>
+			</div>
+			<!--./content-caption-->
+		</div>
+		<!--./Thumbnail-child-->
+		<!--Thumbnail child, please give the class "content" and "content caption"-->
+		<!--Images will be rescaled to 300 x 300-->
+		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-4.jpg)">
+			<!--Preview icon that will toggle the modal-->
+			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
+			<!--Content details go here-->
+			<div class="content-caption">
+				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
+				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
+				<!--heading-->
+				<div class="content-heading">
+					<h2>Hypesong</h2><!--Max length: 15 characters-->
+				</div>
+				<!--Tags-->
+				<div class="content-tags"><!--tags need to have limits-->
+					<a href="#">#hype</a>
+					<a href="#">#song</a>
+				</div>
+			</div>
+			<!--./content-caption-->
+		</div>
+		<!--./Thumbnail-child-->
+		<!--Thumbnail child, please give the class "content" and "content caption"-->
+		<!--Images will be rescaled to 300 x 300-->
+		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-5.jpg)">
+			<!--Preview icon that will toggle the modal-->
+			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
+			<!--Content details go here-->
+			<div class="content-caption">
+				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
+				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
+				<!--heading-->
+				<div class="content-heading">
+					<h2>Hypesong</h2><!--Max length: 15 characters-->
+				</div>
+				<!--Tags-->
+				<div class="content-tags"><!--tags need to have limits-->
+					<a href="#">#hype</a>
+					<a href="#">#song</a>
+				</div>
+			</div>
+			<!--./content-caption-->
+		</div>
+		<!--./Thumbnail-child-->
+		<!--Thumbnail child, please give the class "content" and "content caption"-->
+		<!--Images will be rescaled to 300 x 300-->
+		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-6.jpg)">
+			<!--Preview icon that will toggle the modal-->
+			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
+			<!--Content details go here-->
+			<div class="content-caption">
+				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
+				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
+				<!--heading-->
+				<div class="content-heading">
+					<h2>Hypesong</h2><!--Max length: 15 characters-->
+				</div>
+				<!--Tags-->
+				<div class="content-tags"><!--tags need to have limits-->
+					<a href="#">#hype</a>
+					<a href="#">#song</a>
+				</div>
+			</div>
+			<!--./content-caption-->
+		</div>
+		<!--./Thumbnail-child-->
+	</div><!--./row-->
+</div><!--./container-->
+<!--./Thumbnails-->
+
+<!--./pagination-->
+<nav>
+<div class ="text-right" style="margin-right: 50px">
+  <ul class="pagination pagination-sm"{margin: 0px !important;}>
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul><!--./pagination pagination-sm-->
+</nav>
+<!--./pagination-->
+
+<!--Seperator-->
+<hr style="height:2px;border:none;color:#gray;background-color:gray;margin: -5px 0 0 0"/>
+<!--./Seperator-->
+
+<!--footer-->
+<footer id="footer" class="footer" style="background-color: rgb(200,200,200)">
+	<div class="container-fluid" style="padding-top: 20px">
+		<div class="col-md-3 col-sm-3 col-xs-12">
+			<h4 style="text-align: center">INFORMATION</h4>
+			<hr style="padding-bottom: 10px"/>
+			<ul style="list-style-type: none;">
+				<li class="footer-item">Contact Us</li>
+				<li class="footer-item">Our Story</li>
+				<li class="footer-item">Our Team</li>
+				<li class="footer-item">Our Mission & Vision</li>
+			</ul>
+		</div><!--./col-md-3-->
+		<div class="col-md-3 col-sm-3 col-xs-12">
+			<h4 style="text-align: center">LEGAL ACT</h4>
+			<hr style="padding-bottom: 10px"/>
+			<ul style="list-style-type: none;">
+				<li class="footer-item">TERMS AND CONDITIONS</li>
+				<li class="footer-item">DATA PRIVACY</li>
+				<li class="footer-item">RIGHT OF WITHDRAWAL</li>
+			</ul>
+		</div><!--./<col-md-3-->
+		<div class="col-md-3 col-sm-3 col-xs-12">
+			<h4 style="text-align: center">BUY TOKENS</h4>
+			<hr style="padding-bottom: 10px"/>
+		</div><!--./<col-md-3-->
+		<div class="col-md-3 col-sm-3 col-xs-12">
+			<h4 style="text-align: center">GET CONNECTED</h4>
+			<hr style="padding-bottom: 10px"/>
+		</div><!--./<col-md-3-->
+	</div><!--./container-->
+</footer>
+<!--./footer-->
+
+<!-- Example Modal -->
+<div id="exampleModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h2 class="modal-title">Title of the content</h2>
+      </div>
+      <div class="modal-body">
+        <table style="text-align:center">
+			<tr>
+			<td>
+				<img src="img/placeholder.png" class="img-square">
+        	</td>
+			<td>
+				<h1>Artist name</h1>
+				<hr>
+				<h3>Music</h3>
+				<a href="#">#tag</a>
+				<a href="#">#tag</a>
+				<a href="#">#tag</a>
+				<a href="#">#tag</a>
+				<a href="#">more..</a>
+				<hr>
+				<p>Textual DescriptionTextual DescriptionTextual DescriptionTextual DescriptionTextual DescriptionTextual Description</p>
+			</td>
+			<tr>
+		</table>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--./Example Modal-->
+</div> <!--./Content wrapper-->
+</div> <!--./Main wrapper !sidebar-->
+
+<!--button for categories-->
+<button class="btn btn-primary" id="cat_button"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+
+<!--jQuery-->
+<script src="js/jquery-2.1.4.js"></script>
+<!--Core bootstrap JS (works with jQuery)-->
+<script src="js/bootstrap.js"></script>
+<!--All scripts-->
+<script type="text/javascript">
+
+	$("#cat_button").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+		if($('#cat_button').css('left') === '-5px'){
+			$("#cat_button").animate({"left":"175px"},380);
+		}
+		if($('#cat_button').css('left') === '175px'){
+			$("#cat_button").animate({"left":"-5px"},380);
+		}
+    });
+
+	$("#tab_signup").click(function(){
+		$("#login-form").hide();
+		$("#signup-form").fadeIn('slow');
+	});
+	
+	$("#tab_login").click(function(){
+		$("#signup-form").hide();
+		$("#login-form").fadeIn('slow');
+	});
+	
+	function toggleLoginForm(){
+		$("#login-signup-form").slideDown('slow');
+	}
+	
+	function hideLoginForm(){
+		$("#login-signup-form").slideUp('slow');
+	}
+	
+	function updateElements(){
+		if($(window).width() < 768){
+			$('#login-signup-form').css({'width':'100%'});
+			$('#tab_login').css({'margin-right':'5px'});
+			$('#tab_signup').css({'margin-left':'5px'});
+			$('#signup-form').css({'margin':'0px'});
+			$('#login-form').css({'margin':'0px'});
+		}else{
+			$('#tab_login').css({'margin-right':'50px'});
+			$('#tab_signup').css({'margin-left':'50px'});
+			$('#signup-form').css({'margin':'50px'});
+			$('#login-form').css({'margin':'50px'});
+			$('#login-signup-form').css({'width':'50%'});
+		}
+	}
+	
+	$('.content').hover(function(){
+		$('#preview',this).fadeIn(100);
+	},function(){
+		$('#preview',this).fadeOut(50);
+	});
+	
+	$(window).resize(function(){
+		updateElements();
+	});
+	$(document).ready(function(){
+		updateElements();
+	});
+	
+	// TODO: Update the sidebar to navbar on xs and 
+</script>
+<!--./<jQuery-->
 </body>
 </html>

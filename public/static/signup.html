@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Hypemonk: Signup</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/ico" href="favicon.png">
+</head>
+<body>
+	
+<!--MAIN WRAPPER FOR THE BODY (REQUIRED FOR THE SIDEBAR TO WORK) !sidebar-->
+<div id="wrapper" class="toggled main">
+
+<!--Sidebar would go here if we need it on this page !sidebar-->
+
+<!--./Sidebar-->
+	
+<!--CONTENT WRAPPER FOR SIDEBAR (REQUIRED FOR SIDEBAR TO WORK) !sidebar-->
+<div id="page-content-wrapper" class="main-content">
+
+
+<!--Navbar-->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		
+		<!--for mobile-->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><strong>HYPEMONK&nbsp;</strong></a>
+		</div><!--./navbar-header-->
+		
+		<!--navbar content-->
+		<div class="collapse navbar-collapse" id="bs-navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<!--Messages-->
+				<li class="navbar-element" role="presentation">
+					<span class="glyphicon glyphicon-bell noti-icon"></span><sup><span class="badge noti-badge"><p>1</p></span></sup>
+				</li>
+				<!--Notifications-->
+				<li class="navbar-element" role="presentation">
+					<span class="glyphicon glyphicon-comment noti-icon"></span><sup><span class="badge noti-badge"><p>2</p></span></sup></a>
+				</li>
+				<!--Username-->
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#" style="font-size: 17px"><img src="img/monk.png" style="margin: -4px 5px 0 0">Peter Parker<b style="margin-left: 5px" class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Edit Profile</a></li>
+						<li><a href="#">Setting</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Earned Tokens</a></li>
+						<li><a href="#">Available Tokens</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Logout<span class="glyphicon glyphicon-log-out"style="margin-left: 5px"></span></a></li>
+					</ul>
+				</li>
+			</ul><!--./nav navbar-nav navbar-right-->
+		</div><!--./Navbar-collapse-->
+	</div><!--./Container-fluid-->
+</nav>
+<!--./Navbar-->
+
+<!--Jumbotron-->
+<div class="jumbotron" style="text-align: center; background-image: url(img/polyart-gray.png); background-size: cover;" >
+	<div style="padding: 20px 10% 0px 10%" id="jumbotron-content-wrapper">
+		<h1 style="color: white">Edit your profile and add your creations in live view.</h1>
+	<!--login/signup would go here if needed-->
+
+	<!--./Login/signup-->
+	</div>
+</div>
+<!--./Jumbotron-->
+
+<!--Signup form-->
+<div class="container">
+	<!--choosing user type-->
+	<div id="user_type">
+		<h4>Live edit profile</h4>
+		<div class="btn-group" role="group">
+			<button type="button" id="usertype_user" onclick="changeType('user')" class="btn btn-lg btn-default">as User</button>
+			<button type="button" id="usertype_creator" onclick="changeType('creator')" class="btn btn-lg btn-primary">as Creator</button>
+		</div>
+	</div>
+	
+	<!--Seperator-->
+	<hr style="height:2px;border:none;color:#gray;background-color:gray;"/>
+	<!--./Seperator-->
+	
+	<!--Simply add "usertype_creator" class for details that are required for creators-->
+	<h3>
+		<span id="user_name">PETER PARKER</span>
+		<span class="usertype_creator">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+		<span id="user_title" class="usertype_creator">DIGITAL ARTIST</span>
+		<button class="btn btn-sm btn-default" onclick="toggleSettings()" style="margin-left: 10px; border-radius: 0%; background-color: rgba(0,0,0,0.2)">
+			<span class="glyphicon glyphicon-pencil"></span>
+		</button>
+	</h3>
+	
+	<!--Seperator-->
+	<hr style="height:2px;border:none;color:#gray;background-color:gray;margin: -5px 0 0 0"/>
+	<!--./Seperator-->
+	
+	<!--usersettings-->
+	<div hidden id="user_settings" class="well col-xs-12" style="border-radius: 0px">
+		<!--fullname-->
+		<div class="col-md-4 col-sm-12 col-xs-12">
+			<label for="user_setting_fullname">Name</label>
+			<input type="text" class="form-control" id="user_setting_fullname" value="Peter Parker"></input>
+		</div>
+		<!--title-->
+		<div class="col-md-4 col-sm-12 col-xs-12 usertype_creator">
+			<label for="user_setting_title">Title</label>
+			<input type="text" class="form-control" id="user_setting_title" value="Digital Artist"></input>
+		</div>
+		<!--username-->
+		<div class="col-md-4 col-sm-12 col-xs-12">
+			<label for="user_setting_title">Username</label>
+			<input type="text" class="form-control" id="user_setting_username" placeholder="Ex:peter18"></input>
+		</div>
+		<!--Facebook-->
+		<div class="col-md-4 col-sm-12 col-xs-12 usertype_creator">
+			<label for="user_setting_facebook">Facebook</label>
+			<input type="text" class="form-control" id="user_setting_facebook" placeholder="Ex:http://facebook.com/peterparker"></input>
+		</div>
+		<!--Twitter-->
+		<div class="col-md-4 col-sm-12 col-xs-12 usertype_creator">
+			<label for="user_setting_twitter">Twitter</label>
+			<input type="text" class="form-control" id="user_setting_twitter" placeholder="Ex:@peterparker"></input>
+		</div>
+		<!--Youtube-->
+		<div class="col-md-4 col-sm-12 col-xs-12 usertype_creator">
+			<label for="user_setting_youtube">Youtube</label>
+			<input type="text" class="form-control" id="user_setting_youtube" placeholder="Ex:http://facebook.com/peterparker"></input>
+		</div>
+		<!--Email-->
+		<div class="col-md-4 col-sm-12 col-xs-12">
+			<label for="user_setting_email">E-Mail</label>
+			<input type="text" class="form-control" id="user_setting_email" value="peterparker@gmail.com"></input>
+			<a href="#">Change password</a>
+		</div>
+		<!--Personal Website-->
+		<div class="col-md-4 col-sm-12 col-xs-12 usertype_creator">
+			<label for="user_setting_website">Personal Website</label>
+			<input type="text" class="form-control" id="user_setting_website" placeholder="Ex: http://Spiderman.com"></input>
+		</div>
+		<!--Creator Category-->
+		<div class="col-md-4 col-sm-12 col-xs-12 usertype_creator">
+			<label for="user_setting_category">Creator Category</label>
+			<select class="form-control" id="user_setting_category">
+				<option value="anime&manga">Anime & Manga</option>
+				<option value="video&films">Videos & Films</option>
+				<option value="music">Music</option>
+				<option value="writing">Writing</option>
+				<option value="comics">Comics</option>
+				<option value="drawing&painting">Drawing & Painting</option>
+				<option value="animation">Animation</option>
+				<option value="podcast">Podcast</option>
+				<option value="games">Games</option>
+				<option value="photography">Photography</option>
+				<option value="comedy">Comedy</option>
+				<option value="science">Science</option>
+				<option value="education">Education</option>
+				<option value="craft&DIY">Craft & DIY</option>
+				<option value="dance&theater">Dance & Theater</option>
+			</select>
+		</div>
+		<!--Save button-->
+		<div class="col-xs-12 text-right" style="margin-top: 10px">
+			<button class="btn btn-primary" style="border-radius: 0" onclick="toggleSettings()">Save Changes</button>
+		</div>
+	</div>
+	<!--./usersettings-->
+	<!--userdetails-->
+	<div id="user_details" class="col-xs-12" style="margin: 20px 0 40px 0; overflow: hidden">
+		<!--profile pic-->
+		<div id="user_detail_pic" class="col-md-2 col-sm-12 text-center" style="margin-top: 5px">
+			<div id="user_detail_pic_cover" class="col-centered" style="border-radius: 50%; height:150px; width:150px; background-image: url('img/profile.jpg'); background-size: 150px"> 
+			</div>
+			<button class="btn btn-default" style="margin-top: -30px; border-radius: 0; background-color: rgba(255,255,255,0.8); color: gray">Edit Avatar</button>
+		</div>
+		<!--description-->
+		<div class="col-md-8 col-sm-12" style="margin-top: 5px">
+			<div id="user_detail_description" class="well" style="border-radius: 0">
+				<!--non edit-->
+				<div id="user_detail_description_noneditable" class="text-left" style="padding-bottom: 20px">
+					<p><strong style="color: darkorange; margin-right: 10px">Description:</strong>Lorem ipsum dolor sit amet, semper vocent fierent has ex, his recusabo pericula scripserit ei. In veritus patrioque constituto pro. Sea aperiri adipiscing an, id laoreet nostrum invenire eam. Nihil scaevola dissentias ex vix, iusto commodo minimum et eos, ex vim duis torquatos. Cum ad habeo suscipit facilisi, fugit veniam id sit, amet vidit vivendo at eam.</p>
+					<button class="btn btn-sm btn-default" onclick="toggleTextarea()" style="float: right; border-radius: 0%; background-color: rgba(0,0,0,0.2)">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+				</div>
+				<!--./non edit-->
+				<!--edit-->
+				<div hidden id="user_detail_description_editable" class="text-left" style="padding-bottom: 20px">
+					<textarea class="form-control" rows="6">Lorem ipsum dolor sit amet, semper vocent fierent has ex, his recusabo pericula scripserit ei. In veritus patrioque constituto pro. Sea aperiri adipiscing an, id laoreet nostrum invenire eam. Nihil scaevola dissentias ex vix, iusto commodo minimum et eos, ex vim duis torquatos. Cum ad habeo suscipit facilisi, fugit veniam id sit, amet vidit vivendo at eam.</textarea>
+					<button class="btn btn-sm btn-primary" onclick="toggleTextarea()" style="float: right; border-radius: 0%;">
+						<span class="glyphicon glyphicon-save" style="margin-right: 5px"></span>Save
+					</button>
+					<button class="btn btn-sm btn-default" onclick="toggleTextarea()" style="float: right; border-radius: 0%;">
+						<span class="glyphicon glyphicon-cancel" style="margin-right: 5px"></span>Cancel
+					</button>
+				</div>
+				<!--Seperator-->
+				<hr style="height:2px;border:none;color:#gray;background-color:gray;margin: 10px 0 10px 0"/>
+				<!--./Seperator-->
+				<div id="user_detail_website_view">
+					<p><strong style="color: darkorange; margin-right: 10px">Website:</strong>http://peterparker.com </p>
+				</div>
+				<!--Seperator-->
+				<hr style="height:2px;border:none;color:#gray;background-color:gray;margin: 10px 0 10px 0"/>
+				<!--./Seperator-->
+				<div id="user_detail_tags_noneditable">
+					<p><strong style="color: darkorange; margin-right: 10px">Tags:</strong>#Spider #Man #Superhero #Marvel #Sticky</p>
+					<button class="btn btn-sm btn-default" onclick="toggleEditTags()" style="float: right; margin-top: -40px; border-radius: 0%; background-color: rgba(0,0,0,0.2)">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+				</div>
+				<!--edittags-->
+				<div hidden id="user_detail_tags_editable" class="text-left" style="padding-bottom: 20px">
+					<input class="form-control" type="text" value="#Spider #Man #Superhero #Marvel #Sticky">
+					<button class="btn btn-sm btn-primary" onclick="toggleEditTags()" style="float: right; border-radius: 0%;">
+						<span class="glyphicon glyphicon-save" style="margin-right: 5px"></span>Save
+					</button>
+					<button class="btn btn-sm btn-default" onclick="toggleEditTags()" style="float: right; border-radius: 0%;">
+						<span class="glyphicon glyphicon-cancel" style="margin-right: 5px"></span>Cancel
+					</button>
+				</div>
+				<!--./edittags-->
+			</div>
+		</div>
+		<!--extras-->
+		<div id="user_detail_extras" class="col-md-2 col-sm-12 text-center" style="border-radius: 0; margin-top: 5px; height: 100%">
+			<button class="btn btn-xl btn-primary" style="width: 100%"><strong>Live Chat</strong><br>@peterparker18</button>
+			<button class="btn btn-xl btn-primary" style="border-radius: 0; margin-top: 40px; width: 100%;"><strong>Save changes</strong></button>
+		</div>
+	</div>
+	<!--./userdetails-->
+</div>
+<!--./Signup form-->
+
+
+</div><!--./page-content-wrapper-->
+</div><!--./wrapper-->
+
+<!--Seperator-->
+<hr style="height:2px;border:none;color:#gray;background-color:gray;margin: -5px 0 0 0"/>
+<!--./Seperator-->
+
+<!--footer-->
+<footer id="footer" class="footer" style="background-color: rgb(200,200,200)">
+	<div class="container-fluid" style="padding-top: 20px">
+		<div class="col-md-3 col-sm-3 col-xs-12">
+			<h4 style="text-align: center">INFORMATION</h4>
+			<hr style="padding-bottom: 10px"/>
+			<ul style="list-style-type: none;">
+				<li class="footer-item">Contact Us</li>
+				<li class="footer-item">Our Story</li>
+				<li class="footer-item">Our Team</li>
+				<li class="footer-item">Our Mission & Vision</li>
+			</ul>
+		</div><!--./col-md-3-->
+		<div class="col-md-3 col-sm-3 col-xs-12">
+			<h4 style="text-align: center">LEGAL ACT</h4>
+			<hr style="padding-bottom: 10px"/>
+			<ul style="list-style-type: none;">
+				<li class="footer-item">TERMS AND CONDITIONS</li>
+				<li class="footer-item">DATA PRIVACY</li>
+				<li class="footer-item">RIGHT OF WITHDRAWAL</li>
+			</ul>
+		</div><!--./<col-md-3-->
+		<div class="col-md-3 col-sm-3 col-xs-12">
+			<h4 style="text-align: center">BUY TOKENS</h4>
+			<hr style="padding-bottom: 10px"/>
+		</div><!--./<col-md-3-->
+		<div class="col-md-3 col-sm-3 col-xs-12">
+			<h4 style="text-align: center">GET CONNECTED</h4>
+			<hr style="padding-bottom: 10px"/>
+		</div><!--./<col-md-3-->
+	</div><!--./container-->
+</footer>
+<!--./footer-->
+
+<!--jQuery-->
+<script src="js/jquery-2.1.4.js"></script>
+<!--Core bootstrap JS (works with jQuery)-->
+<script src="js/bootstrap.js"></script>
+<script>
+	
+	// ADD SLIDEDOWN ANIMATION TO DROPDOWN //
+	$('.dropdown').on('show.bs.dropdown', function(e){
+		$(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+	});
+	
+	// ADD SLIDEUP ANIMATION TO DROPDOWN //
+	$('.dropdown').on('hide.bs.dropdown', function(e){
+		$(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+	});
+	
+	// Switching user types
+	function changeType(type){
+		if(type === "user"){
+			$('#usertype_user').removeClass('btn-default');
+			$('#usertype_user').addClass('btn-primary');
+			$('#usertype_creator').removeClass('btn-primary');
+			$('#usertype_creator').addClass('btn-default');
+			$('.usertype_creator').fadeOut('fast');
+		}
+		if(type === "creator"){
+			$('#usertype_creator').removeClass('btn-default');
+			$('#usertype_user').removeClass('btn-primary');
+			$('#usertype_creator').addClass('btn-primary');
+			$('#usertype_user').addClass('btn-default');
+			$('.usertype_creator').fadeIn('fast');
+		}
+	}
+	
+	// Toggles dropdown
+	$('.dropdown-toggle').dropdown();
+	
+	function toggleSettings(){
+		$('#user_settings').slideToggle('fast');
+	}
+	
+	function toggleTextarea(){
+		$('#user_detail_description_noneditable').slideToggle('fast');
+		$('#user_detail_description_editable').slideToggle('fast');
+	}
+	
+	function toggleEditTags(){
+		$('#user_detail_tags_noneditable').slideToggle('fast');
+		$('#user_detail_tags_editable').slideToggle('fast');
+	}
+	
+	$(document).ready(function(){
+		$('#user_settings').slideDown('fast');	
+	});
+</script>
+</body>
+</html>
