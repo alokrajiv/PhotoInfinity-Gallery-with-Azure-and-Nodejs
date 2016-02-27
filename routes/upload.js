@@ -2,9 +2,22 @@ var express = require('express');
 var router = express.Router();
 var azure = require('azure-storage');
 var logger = require('../tools/logger.js');
-var multer = require('multer')
-var upload = multer({ dest: './data/tempUpld/' });
+var multer = require('multer');
+var path = require('path');
+//var upload = multer({ dest: './data/tempUpld/' });
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './data/tempUpld/')
+  },
+  filename: function (req, file, cb) {
+    require("crypto").pseudoRandomBytes(16, function (err, raw) {
+      cb(null, raw.toString('hex') + Date.now() + path.extname(file.originalname))
+    });
+  }
+});
+var upload = multer({ storage: storage });
 var fs = require('fs');
+
 
 var blobClient = azure.createBlobService("artifactstorage1", "whkQiGJDrzxEfnSJMDp7i5u1CSikwJBl1S0wPc+CT8syIcrXqf8qzXo1koCAYYDYR6OG6iWPTBurflDc1JWhYQ=="),
     containerName = 'taskcontainer';
@@ -63,21 +76,32 @@ router.post('/testUpload', upload.single('uploadedFile'), function (req, res) {
         contentType: files.mimetype,
         metadata: { fileName: newName }
     };
+    console.log(extension);
+    require('lwip').open(files.path, function (err, image) {
+        // check err...
+        // define a batch of manipulations and save to disk as JPEG:
+        image.batch()
+            .resize(500, 500)      
+            .writeFile(files.path, function (err) {
+                blobClient.createBlockBlobFromLocalFile(containerName, fields.itemName, files.path, options, function (error) {
+                    console.log("reached!!");
+                    if (error != null) {
+                        res.json({ error: error });
+                    } else {
+                        var filePath = files.path;
+                        fs.unlinkSync(filePath);
+                        var blobName = fields.itemName;
+                        var SASToken = setSAS(containerName, blobName);
+                        var sasURL = blobClient.getUrl(containerName, blobName, SASToken);
+                        res.json({ sasURL: sasURL })
+                        //res.redirect('/upload/list/');
+                    }
+                });
+            });
 
-    blobClient.createBlockBlobFromLocalFile(containerName, fields.itemName, files.path, options, function (error) {
-        console.log("reached!!");
-        if (error != null) {
-            res.json({ error: error });
-        } else {
-            var filePath = files.path;
-            fs.unlinkSync(filePath);
-            var blobName = fields.itemName;
-            var SASToken = setSAS(containerName, blobName);
-            var sasURL = blobClient.getUrl(containerName, blobName, SASToken);
-            res.json({ sasURL: sasURL })
-            //res.redirect('/upload/list/');
-        }
     });
+
+
 })
 
 router.post('/uploadhandler', function (req, res) {
