@@ -1,31 +1,44 @@
 var express = require('express');
 var router = express.Router();
 var azure = require('azure-storage');
-var formidable = require('formidable');
-var logger = require('../tools/logger.js')
+var logger = require('../tools/logger.js');
+var multer = require('multer')
+var upload = multer({ dest: './data/tempUpld/' });
+var fs = require('fs');
+
 var blobClient = azure.createBlobService("artifactstorage1", "whkQiGJDrzxEfnSJMDp7i5u1CSikwJBl1S0wPc+CT8syIcrXqf8qzXo1koCAYYDYR6OG6iWPTBurflDc1JWhYQ=="),
     containerName = 'taskcontainer';
+
 blobClient.createContainerIfNotExists(containerName, {
     publicAccessLevel: 'blob'
 }, function (error, result, response) {
     if (!error) {
-        logger.log('info', 'from createContainerIfNotExists', {error: error, result: result});
+        logger.log('info', 'from createContainerIfNotExists', { error: error, result: result });
     }
     else {
-        logger.log('error', 'from createContainerIfNotExists', {error: error, result: result});
+        logger.log('error', 'from createContainerIfNotExists', { error: error, result: result });
     }
 });
-//console.log(blobClient);
 function setSAS(containerName, blobName) {
+    var startDate = new Date();
+    var expiryDate = new Date(startDate);
+    expiryDate.setMinutes(startDate.getMinutes() + 100);
+    startDate.setMinutes(startDate.getMinutes() - 100);
+
     var sharedAccessPolicy = {
         AccessPolicy: {
-            Expiry: azure.date.minutesFromNow(3)
-        }
+            Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
+            Start: startDate,
+            Expiry: expiryDate
+        },
     };
 
-    var blobUrl = blobClient.getBlobUrl(containerName, blobName, sharedAccessPolicy);
-    console.log("access the blob at ", blobUrl);
+    var SASToken = blobClient.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
+    return SASToken;
+
 }
+
+
 
 /* GET home page. */
 router.get('/list', function (req, res) {
@@ -40,9 +53,35 @@ router.get('/list', function (req, res) {
     });
 });
 
+router.post('/testUpload', upload.single('uploadedFile'), function (req, res) {
+    var files = req.file,
+        fields = req.body;
+    var extension = files.originalname.split('.').pop();
+    var newName = fields.itemName + '.' + extension;
 
+    var options = {
+        contentType: files.mimetype,
+        metadata: { fileName: newName }
+    };
+
+    blobClient.createBlockBlobFromLocalFile(containerName, fields.itemName, files.path, options, function (error) {
+        console.log("reached!!");
+        if (error != null) {
+            res.json({ error: error });
+        } else {
+            var filePath = files.path;
+            fs.unlinkSync(filePath);
+            var blobName = fields.itemName;
+            var SASToken = setSAS(containerName, blobName);
+            var sasURL = blobClient.getUrl(containerName, blobName, SASToken);
+            res.json({ sasURL: sasURL })
+            //res.redirect('/upload/list/');
+        }
+    });
+})
 
 router.post('/uploadhandler', function (req, res) {
+    var formidable = require('formidable');
     var form = new formidable.IncomingForm();
 
     form.parse(req, function (err, fields, files) {
