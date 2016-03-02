@@ -4,6 +4,7 @@
 <title>Hypemonk</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="css/hexagon.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/ico" href="favicon.png">
 </head>
@@ -144,151 +145,133 @@
 <hr width="90%" style="height:2px;border:none;color:#gray;background-color:gray;"/>
 <!--./Seperator-->
 
-<!--Thumbnails-->
-<!--TODO: Make thumbnails dynamic-->
+<!--Hexagon thumbnails-->
 <div class="container">
-	<div class="col-md-12" style="margin: 20px 40px 20px 40px;">
-		<!--Thumbnail child, please give the class "content" and "content caption"-->
-		<!--Images will be rescaled to 300 x 300-->
-		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-1.jpg)">
-			<!--Preview icon that will toggle the modal-->
-			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
-			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
-			<!--Content details go here-->
-			<div class="content-caption">
-				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
-				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
-				<!--heading-->
-				<div class="content-heading">
-					<h2>Hypesong</h2><!--Max length: 15 characters-->
-				</div>
-				<!--Tags-->
-				<div class="content-tags"><!--tags need to have limits-->
-					<a href="#">#hype</a>
-					<a href="#">#song</a>
-				</div>
-			</div>
-			<!--./content-caption-->
-		</div>
-		<!--./Thumbnail-child-->
-		<!--Thumbnail child, please give the class "content" and "content caption"-->
-		<!--Images will be rescaled to 300 x 300-->
-		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-2.jpg)">
-			<!--Preview icon that will toggle the modal-->
-			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
-			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
-			<!--Content details go here-->
-			<div class="content-caption">
-				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
-				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
-				<!--heading-->
-				<div class="content-heading">
-					<h2>Hypesong</h2><!--Max length: 15 characters-->
-				</div>
-				<!--Tags-->
-				<div class="content-tags"><!--tags need to have limits-->
-					<a href="#">#hype</a>
-					<a href="#">#song</a>
-				</div>
-			</div>
-			<!--./content-caption-->
-		</div>
-		<!--./Thumbnail-child-->
-		<!--Thumbnail child, please give the class "content" and "content caption"-->
-		<!--Images will be rescaled to 300 x 300-->
-		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-3.jpg)">
-			<!--Preview icon that will toggle the modal-->
-			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
-			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
-			<!--Content details go here-->
-			<div class="content-caption">
-				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
-				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
-				<!--heading-->
-				<div class="content-heading">
-					<h2>Hypesong</h2><!--Max length: 15 characters-->
-				</div>
-				<!--Tags-->
-				<div class="content-tags"><!--tags need to have limits-->
-					<a href="#">#hype</a>
-					<a href="#">#song</a>
-				</div>
-			</div>
-			<!--./content-caption-->
-		</div>
-		<!--./Thumbnail-child-->
-		<!--Thumbnail child, please give the class "content" and "content caption"-->
-		<!--Images will be rescaled to 300 x 300-->
-		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-4.jpg)">
-			<!--Preview icon that will toggle the modal-->
-			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
-			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
-			<!--Content details go here-->
-			<div class="content-caption">
-				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
-				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
-				<!--heading-->
-				<div class="content-heading">
-					<h2>Hypesong</h2><!--Max length: 15 characters-->
-				</div>
-				<!--Tags-->
-				<div class="content-tags"><!--tags need to have limits-->
-					<a href="#">#hype</a>
-					<a href="#">#song</a>
-				</div>
-			</div>
-			<!--./content-caption-->
-		</div>
-		<!--./Thumbnail-child-->
-		<!--Thumbnail child, please give the class "content" and "content caption"-->
-		<!--Images will be rescaled to 300 x 300-->
-		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-5.jpg)">
-			<!--Preview icon that will toggle the modal-->
-			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
-			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
-			<!--Content details go here-->
-			<div class="content-caption">
-				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
-				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
-				<!--heading-->
-				<div class="content-heading">
-					<h2>Hypesong</h2><!--Max length: 15 characters-->
-				</div>
-				<!--Tags-->
-				<div class="content-tags"><!--tags need to have limits-->
-					<a href="#">#hype</a>
-					<a href="#">#song</a>
-				</div>
-			</div>
-			<!--./content-caption-->
-		</div>
-		<!--./Thumbnail-child-->
-		<!--Thumbnail child, please give the class "content" and "content caption"-->
-		<!--Images will be rescaled to 300 x 300-->
-		<div class="col-md-4 col-sm-4 col-xs-12 content" style="background-image: url(img/content-6.jpg)">
-			<!--Preview icon that will toggle the modal-->
-			<!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
-			<img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand;" src="img/preview_hex.png">
-			<!--Content details go here-->
-			<div class="content-caption">
-				<!--Category | button can only have 1 character length or a glypicon/custom icon-->
-				<button class="btn btn-xl btn-circle"><span class="glyphicon glyphicon-music"></span></button>
-				<!--heading-->
-				<div class="content-heading">
-					<h2>Hypesong</h2><!--Max length: 15 characters-->
-				</div>
-				<!--Tags-->
-				<div class="content-tags"><!--tags need to have limits-->
-					<a href="#">#hype</a>
-					<a href="#">#song</a>
-				</div>
-			</div>
-			<!--./content-caption-->
-		</div>
-		<!--./Thumbnail-child-->
-	</div><!--./row-->
-</div><!--./container-->
-<!--./Thumbnails-->
+    <!--row with 4 hexagons-->
+    <div class="row" style="margin: 20px 20px 20px 20px">
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-7.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-5.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-1.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-3.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+    </div>
+    <!--./row-->
+    <!--row with 3 hexagons-->
+    <div class="row" style="margin: 20px 20px 20px 20px">
+        <!--filler col--><div class="col-md-1" style="width: 12.499999995%"></div><!--./filler col-->
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-6.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-6.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-6.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+        <!--filler col--><div class="col-md-1"></div><!--./filler col-->
+    </div>
+    <!--./row-->
+    <!--row with 4 hexagons-->
+    <div class="row" style="margin: 20px 20px 20px 20px">
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-7.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-5.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-1.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+        <!--col-->
+        <div class="col-md-3 hex-preview">
+            <!--Backend will have to give different data-target for different modals (lot of work *tsk tsk*)-->
+            <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">
+            <div class="hexagon" style="background-image: url(../img/content-3.jpg)">
+                  <div class="hexTop"></div>
+                  <div class="hexBottom"></div>
+            </div>
+        </div>
+        <!--./col-->
+    </div>
+    <!--./row-->
+</div>
 
 <!--./pagination-->
 <nav>
@@ -451,6 +434,13 @@
 		$('#preview',this).fadeOut(50);
 	});
 	
+    $('.hex-preview').hover(function(){
+		$('#preview',this).fadeIn(100);
+	},function(){
+		$('#preview',this).fadeOut(50);
+	});
+	
+    
 	$(window).resize(function(){
 		updateElements();
 	});
