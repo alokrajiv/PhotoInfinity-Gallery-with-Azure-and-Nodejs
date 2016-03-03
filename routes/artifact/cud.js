@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var ArtifactModel = require('../../models/artifact.js');
 var azure = require('azure-storage');
-var logger = require('../tools/logger.js');
+var logger = require('../../tools/logger.js');
 var multer = require('multer');
 var path = require('path');
-//var upload = multer({ dest: './data/tempUpld/' });
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './data/tempUpld/')
@@ -45,26 +45,37 @@ function setSAS(containerName, blobName) {
             Expiry: expiryDate
         },
     };
+
     var SASToken = blobClient.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
     return SASToken;
+
 }
 
 
+router.post('/', function (req, res) {
+    var newArtifact = new ArtifactModel({
+        name: req.body.newArtifact.name,
+        ownerId: req.body.newArtifact.ownerId,
+        meta: {
+            categoryId: req.body.newArtifact.meta.categoryId,
+            subCategoryId: req.body.newArtifact.meta.subCategoryId,
+            descr: req.body.newArtifact.meta.descr,
+            tags: req.body.newArtifact.meta.tags,
+        }
+    });
+    newArtifact.save(function (err) {
+        if (err) {
+            res.json({ onSave: 'failed', err: err });
+        }
+        else {
+            res.json({ onSave: 'success' });
+        };
 
-/* GET home page. */
-router.get('/list', function (req, res) {
-
-    console.log(blobClient);
-    blobClient.listBlobsSegmented(containerName, null, function (error, result, response) {
-        res.json({
-            error: error,
-            result: result,
-            response: response
-        });
     });
 });
 
-router.post('/testUpload', upload.single('uploadedFile'), function (req, res) {
+
+router.post('/addData', upload.single('uploadedFile'), function (req, res) {
     var files = req.file,
         fields = req.body;
     var extension = files.originalname.split('.').pop();
@@ -99,4 +110,12 @@ router.post('/testUpload', upload.single('uploadedFile'), function (req, res) {
     });
 })
 
+
+router.put('/', function (req, res) {
+
+});
+
+router.delete('/', function (req, res) {
+
+});
 module.exports = router;

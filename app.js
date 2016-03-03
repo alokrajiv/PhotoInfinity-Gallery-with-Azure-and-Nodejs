@@ -42,6 +42,9 @@ passport.use(new BasicStrategy(
 
 app.use('/', require('./routes/index'));
 app.use('/upload', require('./routes/upload'));
+app.use('/artifact', require('./routes/artifact/r'));
+app.use('/artifact/cud', require('./routes/artifact/cud'));
+app.use('/category', require('./routes/category'));
 app.use('/user',passport.authenticate('basic', { session: false }), require('./routes/user'));
 
 

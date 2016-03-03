@@ -1,10 +1,18 @@
 var express = require('express');
 var router = express.Router();
-
+var UserModel = require('../models/user.js');
 
 router.get('/', function (req, res) {
-    res.json({userData: 'BLOB'});
+    UserModel.find({}, function (err, data) {
+        res.json(data);
+    })
 });
+router.get('/username/:username', function (req, res) {
+    UserModel.findOne({ username: req.params.username }, function (err, user) {
+        req.json({data: user});
+    });
+});
+
 router.post('/', function (req, res) {
     res.redirect('/static/');
 });
