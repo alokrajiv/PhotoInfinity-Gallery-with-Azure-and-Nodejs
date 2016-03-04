@@ -5,7 +5,12 @@ var CategoryModel = require('../models/category.js');
 
 router.get('/', function (req, res) {
     CategoryModel.find({}, function (err, data) {
-        res.json(data);
+        if (err) {
+            res.json({ onFind: 'failed', err: err });
+        }
+        else {
+            res.json({ onFind: 'success', data: data });
+        };
     })
 });
 router.post('/', function (req, res) {
