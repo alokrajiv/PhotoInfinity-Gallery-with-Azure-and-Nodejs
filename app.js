@@ -26,14 +26,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 passport.use(new BasicStrategy(
     function (username, password, done) {
         var UserModel = require('./models/user.js');
-        UserModel.findOne({username: username}, function(err, user){
-            if(err){
+        UserModel.findOne({ username: username }, function (err, user) {
+            if (err) {
                 done(null, false);
             }
-            else if(!user){
+            else if (!user) {
                 done(null, false);
             }
-            else{
+            else {
                 user.comparePassword(password, done);
             }
         });
@@ -45,7 +45,7 @@ app.use('/upload', require('./routes/upload'));
 app.use('/artifact', require('./routes/artifact/r'));
 app.use('/artifact/cud', require('./routes/artifact/cud'));
 app.use('/category', require('./routes/category'));
-app.use('/user',passport.authenticate('basic', { session: false }), require('./routes/user'));
+app.use('/user', passport.authenticate('basic', { session: false }), require('./routes/user'));
 
 
 

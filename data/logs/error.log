@@ -1,2 +1,0 @@
-{"error":{"code":"ContainerBeingDeleted","statusCode":409,"requestId":"b3432744-0001-002b-1a94-70bd46000000"},"level":"error","message":"from createContainerIfNotExists","timestamp":"2016-02-26T12:48:41.236Z"}
-{"error":{"code":"ContainerBeingDeleted","statusCode":409,"requestId":"5964e220-0001-0015-4294-700b67000000"},"level":"error","message":"from createContainerIfNotExists","timestamp":"2016-02-26T12:48:54.921Z"}

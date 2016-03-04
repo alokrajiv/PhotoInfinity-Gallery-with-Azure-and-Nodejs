@@ -1,1 +1,5 @@
 node_modules/
+data/logs/
+data/tempUpld/
+data/testDB/db/
+data/tests/
