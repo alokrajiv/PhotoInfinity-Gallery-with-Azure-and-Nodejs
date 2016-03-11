@@ -19,7 +19,8 @@ var ArtifactSchema = mongoose.Schema({
             index: true
         },
         descr: String,
-        logo: String,
+        logo: {blobName: String,
+            name: String},
         tags: [String]
     },
 

@@ -21,7 +21,7 @@ describe('Category Endpoint - CR', function() {
 
         request(options, function(error, response, body) {
             if (error) throw new Error(error);
-            
+
             assert.equal(body.onSave, 'success');
             done();
         });

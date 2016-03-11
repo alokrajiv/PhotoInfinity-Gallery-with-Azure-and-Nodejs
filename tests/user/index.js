@@ -11,20 +11,26 @@ describe('User Endpoint - C', function() {
                 'cache-control': 'no-cache',
                 'content-type': 'application/json'
             },
-            body: { 
-                newUser: 
-                { 
-                    username: 'testuser', 
-                    password: 'password' 
-                    } 
-                    },
+            body: {
+                newUser:
+                {
+                    username: 'testuser',
+                    password: 'password'
+                }
+            },
             json: true
         };
 
         request(options, function(error, response, body) {
             if (error) throw new Error(error);
-            assert.equal(body.onSave, 'success');
-            done();
+            try {
+                assert.equal(body.onSave, 'success');
+                done();
+            } catch (error) {
+                console.log("Unexpected Output:");
+                console.log(body);
+                done(error);
+            }
         });
 
     });
