@@ -92,8 +92,10 @@ router.post('/', upload.single('logoImageFile'), function(req, res) {
                     contentType: files.mimetype,
                     metadata: { fileName: newName }
                 };
+
+                console.log("3reached!!");
                 blobClient.createBlockBlobFromLocalFile(containerName, newName, filePath, options, function(error) {
-                    console.log("reached!!");
+                    console.log("4reached!!");
                     if (error != null) {
                         errorAcc.azureUploadError = error;
                         res.json(errorAcc);
@@ -110,7 +112,7 @@ router.post('/', upload.single('logoImageFile'), function(req, res) {
                                 subCategoryId: req.body.newArtifactMetaSubCategoryId,
                                 descr: req.body.newArtifactMetaDescr,
                                 tags: req.body.newArtifactMetaTags.split(','),
-                                logo:{
+                                logo: {
                                     name: req.body.itemName,
                                     blobName: blobName
                                 }
