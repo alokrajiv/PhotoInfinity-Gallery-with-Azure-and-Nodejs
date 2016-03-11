@@ -93,7 +93,7 @@ router.post('/', upload.single('logoImageFile'), function(req, res) {
                 blobClient.createBlockBlobFromLocalFile(containerName, newName, filePath, options, function(error) {
                     console.log("reached!!");
                     if (error != null) {
-                        res.json({ error: error });
+                        res.json({ azureUploadError: error });
                     } else {
                         fs.unlinkSync(filePath);
                         var blobName = newName;
