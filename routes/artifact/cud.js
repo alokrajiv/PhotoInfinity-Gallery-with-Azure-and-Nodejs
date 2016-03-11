@@ -75,9 +75,11 @@ router.post('/o', upload.single('logoImageFile'), function(req, res) {
 
 router.post('/', upload.single('logoImageFile'), function(req, res) {
     var files = req.file;
+    var errorAcc = {};
     var extension = files.originalname.split('.').pop();
     var newName = require('node-uuid').v4() + '.' + extension;
-    var filePath = __dirname + '../../../data/tempUpld/' + newName;
+    var filePath = __dirname + '/../../data/tempUpld/' + newName;
+    errorAcc.filePath = filePath;
     var Jimp = require("jimp");
     console.log("0reached!!");
     Jimp.read(files.buffer, function(err, image) {
@@ -93,7 +95,8 @@ router.post('/', upload.single('logoImageFile'), function(req, res) {
                 blobClient.createBlockBlobFromLocalFile(containerName, newName, filePath, options, function(error) {
                     console.log("reached!!");
                     if (error != null) {
-                        res.json({ azureUploadError: error });
+                        errorAcc.azureUploadError = error;
+                        res.json(errorAcc);
                     } else {
                         fs.unlinkSync(filePath);
                         var blobName = newName;
