@@ -93,7 +93,7 @@ router.post('/', upload.single('logoImageFile'), function(req, res) {
                     metadata: { fileName: newName }
                 };
 
-                console.log("3reached!!");
+                console.log("3reached!! & path="+filePath);
                 blobClient.createBlockBlobFromLocalFile(containerName, newName, filePath, options, function(error) {
                     console.log("4reached!!");
                     if (error != null) {
