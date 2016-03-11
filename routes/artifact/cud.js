@@ -77,7 +77,7 @@ router.post('/', upload.single('logoImageFile'), function(req, res) {
     var files = req.file;
     var extension = files.originalname.split('.').pop();
     var newName = require('node-uuid').v4() + '.' + extension;
-    var filePath = __dirname + '../../data/tempUpld/' + newName;
+    var filePath = __dirname + '../../../data/tempUpld/' + newName;
     var Jimp = require("jimp");
     console.log("0reached!!");
     Jimp.read(files.buffer, function(err, image) {
