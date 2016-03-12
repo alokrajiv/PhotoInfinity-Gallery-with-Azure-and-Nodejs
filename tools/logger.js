@@ -8,12 +8,12 @@ module.exports = new (winston.Logger)({
         }),
         new (winston.transports.File)({
             name: 'error-log',
-            filename: __dirname + '/../logs/error.log',
+            filename: __dirname + '/../data/logs/error.log',
             level: 'error'
         }),
         new (winston.transports.File)({
             name: 'info-file',
-            filename: __dirname + '/../logs/info.log',
+            filename: __dirname + '/../data/logs/info.log',
             level: 'info'
         })
     ]
