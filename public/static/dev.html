@@ -1,7 +1,52 @@
-<form action="/upload/testUpload" enctype="multipart/form-data" method="post">
-    <input type="text" name="itemName">
-    <br>
-    <input type="file" name="uploadedFile" multiple="multiple">
-    <br>
-    <input type="submit" value="Upload">
-</form>
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+    <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <form action="/artifact/cud/" enctype="multipart/form-data" method="post">
+        Name of your artifact:
+        <input type="text" name="newArtifactName">
+        <br> Hidden Owner-Id:
+        <input type="text" name="newArtifactOwnerId" value="56d8108222eeab990c278a74">
+        <br> Categegory:
+        <select id="field_categoryId" name="newArtifactMetaCategoryId">
+            <option></option>
+        </select>
+        <br> Sub-Category:
+        <select id="field_subCategoryId" name="newArtifactMetaSubCategoryId">
+            <option></option>
+        </select>
+        <br> Descr:
+        <textarea name="newArtifactMetaDescr"></textarea>
+        <br> Tags(comma seperated):
+        <input type="text" name="newArtifactMetaTags">
+        <br>Logo Name
+        <input type="text" name="itemName" value="logo">
+        <br>
+        <input type="file" name="logoImageFile" multiple="multiple">
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+    <!--jQuery-->
+    <script src="js/jquery-2.1.4.js"></script>
+    <!--Core bootstrap JS (works with jQuery)-->
+    <script src="js/bootstrap.js"></script>
+    <!--All scripts-->
+    <script type="text/javascript" src="js/dev.js"></script>
+</body>
+
+</html>

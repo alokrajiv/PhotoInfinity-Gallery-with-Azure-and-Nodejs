@@ -33,6 +33,18 @@ module.exports = function (grunt) {
                         cwd: '.'
                     }
                 }
+            },
+            nodemon: {
+                command: 'nodemon bin/www',
+                options: {
+                    async: true,
+                    stdout: false,
+                    stderr: true,
+                    failOnError: true,
+                    execOptions: {
+                        cwd: '.'
+                    }
+                }
             }
         },
         env: {
@@ -45,13 +57,14 @@ module.exports = function (grunt) {
             localTestDB:['./data/testDB/db/*', '!./data/testDB/db/.gitignore']
         }
     });
-    grunt.registerTask('startServer', 'Start a custom web server', function () {
+    grunt.registerTask('instantiateServer', 'Start a custom web server', function () {
         var server = require('./app.js').listen(3001, function () {
             grunt.log.writeln('Express server listening on port ' + server.address().port);
         });
     });
-    grunt.registerTask('testServer', ['env:test','clean:localTestDB', 'shell:mongodb', 'startServer']);
+    grunt.registerTask('testServer', ['env:test','clean:localTestDB', 'shell:mongodb', 'instantiateServer']);
+    grunt.registerTask('localServer', ['instantiateServer', 'keepalive']);
     grunt.registerTask('test', ['testServer', 'mochaTest', 'shell:mongodb:kill']);
-    grunt.registerTask('default', 'mochaTest');
+    grunt.registerTask('default', ['mochaTest']);
 
 };

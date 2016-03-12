@@ -55,5 +55,19 @@ router.post('/id/:id/subcategory/', function (req, res) {
     })
 });
 
+router.delete('/id/:id/subcategory/id/:subId', function (req, res) {
+    CategoryModel.findById(req.params.id, function (err, data) {
+        data.subCategory.id(req.params.subId).remove();
+        data.save(function (err) {
+            if (err) {
+                res.json({ onSave: 'failed', err: err });
+            }
+            else {
+                res.json({ onSave: 'success' });
+            };
+
+        });
+    })
+});
 
 module.exports = router;
