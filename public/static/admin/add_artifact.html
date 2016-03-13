@@ -17,30 +17,56 @@
 </head>
 
 <body>
-    <form action="/artifact/cud/" enctype="multipart/form-data" method="post">
-        Name of your artifact:
-        <input type="text" name="newArtifactName">
-        <br> Hidden Owner-Id:
-        <input type="text" name="newArtifactOwnerId" value="56d8108222eeab990c278a74">
-        <br> Categegory:
-        <select id="field_categoryId" name="newArtifactMetaCategoryId">
-            <option></option>
-        </select>
-        <br> Sub-Category:
-        <select id="field_subCategoryId" name="newArtifactMetaSubCategoryId">
-            <option></option>
-        </select>
-        <br> Descr:
-        <textarea name="newArtifactMetaDescr"></textarea>
-        <br> Tags(comma seperated):
-        <input type="text" name="newArtifactMetaTags">
-        <br>Logo Name
-        <input type="text" name="itemName" value="logo">
-        <br>
-        <input type="file" name="logoImageFile" multiple="multiple">
-        <br>
-        <input type="submit" value="Upload">
-    </form>
+    <div class="container">
+    <h3>ADD AN ARTIFACT</h3>
+        <div class="container">
+            <form action="/artifact/cud/" enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <label>Name of your artifact:</label>
+                    <input type="text" name="newArtifactName">
+                </div>
+                <div class="form-group">
+                    <label> Hidden Owner-Id:</label>
+                    <input type="text" name="newArtifactOwnerId" value="56d8108222eeab990c278a74">
+                </div>
+                <div class="form-group">
+                    <label>Categegory:</label>
+                    <select id="field_categoryId" name="newArtifactMetaCategoryId">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label> Sub-Category:</label>
+                    <select id="field_subCategoryId" name="newArtifactMetaSubCategoryId">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label> Descr:</label>
+                    <textarea name="newArtifactMetaDescr">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat. </textarea>
+                </div>
+                <div class="form-group">
+                    <label> Tags(comma seperated):</label>
+                    <input type="text" name="newArtifactMetaTags">
+                </div>
+                <div class="form-group">
+                    <label>Logo Name</label>
+                    <input type="text" name="itemName" value="logo">
+                </div>
+                <div class="form-group">
+                    <label>LOGO PHOTO (PNG, JPEG or BMP file)</label>
+                    <input type="file" name="logoImageFile" multiple="multiple">
+                </div>
+                <div class="form-group">
+                    <br>
+                    <input type="submit" value="Upload">
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!--jQuery-->
     <script src="/static/js/jquery-2.1.4.js"></script>
     <!--Core bootstrap JS (works with jQuery)-->

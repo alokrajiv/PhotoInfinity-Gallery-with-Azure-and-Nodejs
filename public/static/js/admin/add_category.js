@@ -1,14 +1,15 @@
 $(function() {
     var listCategory = $('#list_category');
+    var listSubCategory = $('#list_sub_category');
+    var fieldCategory = $('#field_categoryId');
+    var selectedCategory = null;
     function updateCategoryList() {
+
         var settings = {
             "async": true,
-            "crossDomain": true,
             "url": "/category/",
             "method": "GET",
             "headers": {
-                "cache-control": "no-cache",
-                "postman-token": "16d3c563-68d1-1d4e-16be-1686923f4012"
             }
         }
 
@@ -18,13 +19,47 @@ $(function() {
                 res += "<li>" + category.categoryName + "</li>"
             });
             listCategory.html(res);
+            var categories = response.data;
+            fieldCategory.change(function(e) {
+                selectedCategory = fieldCategory.val();
+                for (var i = 0; i < categories.length; i++) {
+                    var category = categories[i];
+                    if (category._id === selectedCategory) {
+                        var res = "";
+                        category.subCategory.forEach(function(subCategory) {
+                            res += "<li>" + subCategory.subCategoryName + "</li>";
+                        });
+                        listSubCategory.html(res);
+                    }
+                }
+            })
+            var res = "";
+            categories.forEach(function(category) {
+                res += "<option value='" + category._id + "'>" + category.categoryName + "</option>";
+            })
+            fieldCategory.html(res).promise().done(function() {
+                if (selectedCategory != null) {
+                    console.log($('#field_categoryId'));
+                    $('#field_categoryId').val(selectedCategory).change()
+                }
+                else {
+                    fieldCategory.val($("#field_categoryId option:first").val()).change();
+                }
+            });
+
+
         });
+
+
     }
     updateCategoryList();
+
+
     var buttonNewCategory = $('#button_new_category');
+    var buttonNewSubCategory = $('#button_new_sub_category');
     var inputNewCategory = $('#input_new_category');
+    var inputNewSubCategory = $('#input_new_sub_category');
     buttonNewCategory.click(function(e) {
-        console.log(inputNewCategory.val());
         var settings = {
             "crossDomain": true,
             "url": "/category/",
@@ -40,7 +75,28 @@ $(function() {
         }
 
         $.ajax(settings).done(function(response) {
-            console.log(response);
+            inputNewCategory.val('')
+            updateCategoryList();
+        });
+    })
+    buttonNewSubCategory.click(function(e) {
+        var settings = {
+            "crossDomain": true,
+            "url": "/category/id/" + selectedCategory + "/subcategory/",
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "data": JSON.stringify({
+                "newSubCategory": {
+                    "name": inputNewSubCategory.val()
+                }
+            })
+        }
+
+        $.ajax(settings).done(function(response) {
+            inputNewSubCategory.val('')
+            updateCategoryList();
         });
     })
 })
