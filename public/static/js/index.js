@@ -16,7 +16,7 @@ $(function() {
                 alert("ON FIND FAILED. SORRY");
             } else {
                 data = response.data;
-                if(data.length === 0){
+                if (data.length === 0) {
                     fullLoaded = true;
                     console.log("No more Data!");
                 }
@@ -62,10 +62,12 @@ $(function() {
             res += '</div>';
         })
         containerArtifacts.html(res);
-        if(!fullLoaded){
+        if (!fullLoaded) {
             load_more_handle();
+        } else{
+            $('#load_more').hide();
         }
-            
+
 
         function hexagonTemplate(artifact) {
             return '\
@@ -85,7 +87,7 @@ $(function() {
                 console.log("Loading Page : " + page);
                 page++;
                 $('#load_more').off('inview');
-                setTimeout(remoteLoad(page, 7, function(){console.log("moo")}),3000);
+                setTimeout(remoteLoad(page, 7, function() { console.log("moo") }), 3000);
             }
         });
     }
