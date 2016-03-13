@@ -4,7 +4,7 @@ $(function() {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:3001/category/",
+            "url": "/category/",
             "method": "GET",
             "headers": {
                 "cache-control": "no-cache",
@@ -27,7 +27,7 @@ $(function() {
         console.log(inputNewCategory.val());
         var settings = {
             "crossDomain": true,
-            "url": "http://localhost:3001/category/",
+            "url": "/category/",
             "method": "POST",
             "headers": {
                 "content-type": "application/json"
