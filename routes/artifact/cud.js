@@ -33,24 +33,7 @@ blobClient.createContainerIfNotExists(containerName, {
         logger.log('error', 'from createContainerIfNotExists', { error: error, result: result });
     }
 });
-function setSAS(containerName, blobName) {
-    var startDate = new Date();
-    var expiryDate = new Date(startDate);
-    expiryDate.setMinutes(startDate.getMinutes() + 100);
-    startDate.setMinutes(startDate.getMinutes() - 100);
 
-    var sharedAccessPolicy = {
-        AccessPolicy: {
-            Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
-            Start: startDate,
-            Expiry: expiryDate
-        },
-    };
-
-    var SASToken = blobClient.generateSharedAccessSignature(containerName, blobName, sharedAccessPolicy);
-    return SASToken;
-
-}
 router.post('/o', upload.single('logoImageFile'), function(req, res) {
     var newArtifact = new ArtifactModel({
         name: req.body.newArtifact.name,
@@ -102,8 +85,6 @@ router.post('/', upload.single('logoImageFile'), function(req, res) {
                     } else {
                         fs.unlinkSync(filePath);
                         var blobName = newName;
-                        var SASToken = setSAS(containerName, blobName);
-                        var sasURL = blobClient.getUrl(containerName, blobName, SASToken);
                         var newArtifact = new ArtifactModel({
                             name: req.body.newArtifactName,
                             ownerId: req.body.newArtifactOwnerId,
@@ -111,7 +92,7 @@ router.post('/', upload.single('logoImageFile'), function(req, res) {
                                 categoryId: req.body.newArtifactMetaCategoryId,
                                 subCategoryId: req.body.newArtifactMetaSubCategoryId,
                                 descr: req.body.newArtifactMetaDescr,
-                                tags: req.body.newArtifactMetaTags.split(','),
+                                tags: req.body.newArtifactMetaTags.split(',').map(function(s){return s.trim();}),
                                 logo: {
                                     name: req.body.itemName,
                                     blobName: blobName
@@ -120,10 +101,10 @@ router.post('/', upload.single('logoImageFile'), function(req, res) {
                         });
                         newArtifact.save(function(err) {
                             if (err) {
-                                res.json({ onSave: 'failed', err: err, sasURL: sasURL });
+                                res.json({ onSave: 'failed', err: err });
                             }
                             else {
-                                res.json({ onSave: 'success', sasURL: sasURL });
+                                res.json({ onSave: 'success'});
                             };
 
                         });

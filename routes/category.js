@@ -14,6 +14,7 @@ router.get('/', function (req, res) {
     })
 });
 router.post('/', function (req, res) {
+    console.log(req.body.newCategory)
     var newCategory = new CategoryModel({
         categoryName: req.body.newCategory.name,
         subCategory: []
@@ -30,6 +31,16 @@ router.post('/', function (req, res) {
 });
 router.get('/id/:id', function (req, res) {
     CategoryModel.findById(req.params.id, function (err, data) {
+        res.json(data);
+    })
+});
+router.delete('/id/:id', function (req, res) {
+    CategoryModel.findById(req.params.id).remove(function (err, data) {
+        res.json(data);
+    })
+});
+router.delete('/name/:name', function (req, res) {
+    CategoryModel.findOne({categoryName: req.params.name}).remove(function (err, data) {
         res.json(data);
     })
 });

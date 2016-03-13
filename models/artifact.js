@@ -53,6 +53,7 @@ ArtifactSchema.pre('save', function(next) {
 //var autoIncrement = require('mongoose-auto-increment');
 //autoIncrement.initialize(mongoose.connection);
 //ArtifactSchema.plugin(autoIncrement.plugin, { model: 'ArtifactModel', field: 'artifactNo' });
+ArtifactSchema.plugin(require('mongoose-paginate'));
 var ArtifactModel = mongoose.model('ArtifactModel', ArtifactSchema);
 
 module.exports = ArtifactModel;
