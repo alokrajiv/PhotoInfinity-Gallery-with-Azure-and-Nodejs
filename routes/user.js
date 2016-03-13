@@ -13,6 +13,12 @@ router.get('/username/:username', function (req, res) {
     });
 });
 
+router.get('/id/:id', function (req, res) {
+    UserModel.findById(req.params.id, function (err, user) {
+        res.json({data: user});
+    })
+});
+
 router.post('/', function (req, res) {
     res.redirect('/static/');
 });

@@ -154,28 +154,6 @@
         <img style="display:block;margin:auto;" src="/static/img/loader.gif">
     </div>
 </div>
-<!--./pagination-->
-<nav>
-<div class ="text-right" style="margin-right: 50px">
-  <ul class="pagination pagination-sm"{margin: 0px !important;}>
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul><!--./pagination pagination-sm-->
-</nav>
-<!--./pagination-->
 
 <!--Seperator-->
 <hr style="height:2px;border:none;color:#gray;background-color:gray;margin: -5px 0 0 0"/>
@@ -223,25 +201,27 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Title of the content</h2>
+        <h2 id="modal-title" class="modal-title">Title of the content</h2>
       </div>
       <div class="modal-body">
         <table style="text-align:center">
 			<tr>
 			<td>
-				<img src="img/placeholder.png" class="img-square">
+				<img style="width:300px" id="modal-img" src="img/placeholder.png" class="img-square">
         	</td>
 			<td>
-				<h1>Artist name</h1>
+				<h1 id="modal-owner">Artist name</h1>
 				<hr>
-				<h3>Music</h3>
+				<h3 id="modal-category">Music</h3>
+				<h4 id="modal-subCategory">Music</h4>
+                <span id="modal-tags"></span>
 				<a href="#">#tag</a>
 				<a href="#">#tag</a>
 				<a href="#">#tag</a>
 				<a href="#">#tag</a>
 				<a href="#">more..</a>
 				<hr>
-				<p>Textual DescriptionTextual DescriptionTextual DescriptionTextual DescriptionTextual DescriptionTextual Description</p>
+				<p id="modal-descr">Textual DescriptionTextual DescriptionTextual DescriptionTextual DescriptionTextual DescriptionTextual Description</p>
 			</td>
 			<tr>
 		</table>

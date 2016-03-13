@@ -31,7 +31,7 @@ router.post('/', function (req, res) {
 });
 router.get('/id/:id', function (req, res) {
     CategoryModel.findById(req.params.id, function (err, data) {
-        res.json(data);
+        res.json({data: data});
     })
 });
 router.delete('/id/:id', function (req, res) {

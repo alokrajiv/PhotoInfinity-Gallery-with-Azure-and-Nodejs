@@ -53,26 +53,29 @@ $(function() {
         var res = "";
         matrixData.forEach(function(row) {
             res += '<div class="row" style="margin: 20px 20px 20px 20px">'
-            if (matrixData.indexOf(row) % 2 == 0) {
+            var rowIndex = matrixData.indexOf(row);
+            if (rowIndex % 2 == 0) {
                 res += '<!--filler col--><div class="col-md-1" style="width: 12.499999995%"></div><!--./filler col-->';
             }
             row.forEach(function(artifact) {
-                res += hexagonTemplate(artifact);
+                var colIndex = row.indexOf(artifact);
+                res += hexagonTemplate(artifact, rowIndex, colIndex);
             })
             res += '</div>';
         })
         containerArtifacts.html(res);
+        updateElements();
         if (!fullLoaded) {
             load_more_handle();
-        } else{
+        } else {
             $('#load_more').hide();
         }
 
 
-        function hexagonTemplate(artifact) {
+        function hexagonTemplate(artifact, rowIndex, colIndex) {
             return '\
             <div class="col-md-3 hex-preview">\
-                    <img data-toggle="modal" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">\
+                    <img data-toggle="modal" data-matrix-row="'+ rowIndex + '" data-matrix-col="' + colIndex + '" data-target="#exampleModal" id="preview" hidden style="position:absolute; cursor: pointer; cursor: hand; z-index:10; top: 25px; left: -25px" src="img/preview_hex.png">\
                         <div class="hexagon" style="background-image: url(' + artifact.meta.logo.url + ')">\
                             <div class="hexTop"></div>\
                             <div class="hexBottom"></div>\
@@ -93,6 +96,49 @@ $(function() {
     }
 
     load_more_handle();
+
+    $('#exampleModal').on('show.bs.modal', function(event) {
+        var modalTitle = $('#modal-title');
+        var modalImage = $('#modal-img');
+        var modalOwner = $('#modal-owner');
+        var modalCategory = $('#modal-category');
+        var modalSubCategory = $('#modal-subCategory');
+        var modalDescr = $('#modal-descr');
+        var target = $(event.relatedTarget)[0] // Button that triggered the modal
+        var rowIndex = $(target).data('matrix-row'),
+            colIndex = $(target).data('matrix-col')
+        var artifact = matrixData[rowIndex][colIndex];
+        modalTitle.html(artifact.name);
+        modalImage.attr('src', artifact.meta.logo.url);
+        modalDescr.html(artifact.meta.descr);
+        var settings1 = {
+            "async": true,
+            "url": "/user/id/" + artifact.ownerId,
+            "method": "GET",
+            "headers": {}
+        }
+
+        $.ajax(settings1).done(function(response) {
+            modalOwner.html(response.data.username);
+        });
+        var settings2 = {
+            "async": true,
+            "url": "/category/id/" + artifact.meta.categoryId,
+            "method": "GET",
+            "headers": {
+            }
+        }
+        $.ajax(settings2).done(function(response) {
+            var category = response.data;
+            modalCategory.html(category.categoryName);
+            for (var i = 0; i < category.subCategory.length; i++) {
+                var subCategory = category.subCategory[i];
+                if (subCategory._id === artifact.meta.subCategoryId) {
+                    modalSubCategory.html(subCategory.subCategoryName);
+                }
+            }
+        });
+    })
 });
 
 $("#cat_button").click(function(e) {
@@ -129,6 +175,12 @@ function hideLoginForm() {
 }
 
 function updateElements() {
+    $('.hex-preview').hover(function() {
+        $('#preview', this).fadeIn(100);
+    }, function() {
+        $('#preview', this).fadeOut(50);
+    });
+
     if ($(window).width() < 768) {
         $('#login-signup-form').css({
             'width': '100%'
@@ -164,17 +216,6 @@ function updateElements() {
     }
 }
 
-$('.content').hover(function() {
-    $('#preview', this).fadeIn(100);
-}, function() {
-    $('#preview', this).fadeOut(50);
-});
-
-$('.hex-preview').hover(function() {
-    $('#preview', this).fadeIn(100);
-}, function() {
-    $('#preview', this).fadeOut(50);
-});
 
 
 $(window).resize(function() {

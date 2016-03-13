@@ -45,7 +45,8 @@ app.use('/upload', require('./routes/upload'));
 app.use('/artifact/search', require('./routes/artifact/search'));
 app.use('/artifact/cud', require('./routes/artifact/cud'));
 app.use('/category', require('./routes/category'));
-app.use('/user', passport.authenticate('basic', { session: false }), require('./routes/user'));
+app.use('/user', require('./routes/user'));
+//app.use('/user', passport.authenticate('basic', { session: false }), require('./routes/user'));
 
 
 
