@@ -1,4 +1,52 @@
-module.exports = function(socket) {
+function BufferPipe() {
+    this._maxSize = 10;
+    this._storage = [];
+}
+
+BufferPipe.prototype.in = function(data) {
+    var size = ++this._size;
+    this._storage.push(data);
+    if (this._storage.length > this._maxSize)
+        this._storage.shift();
+};
+BufferPipe.prototype.show = function() {
+    return this._storage;
+};
+//--end-->BufferPipe datatype
+
+
+var missions = [
+    {
+        id: 0,
+        name: 'MISSION Microsoft Azure',
+        descr: 'Survey?',
+        logo: 'images/ben.png',
+        messagePipe: new BufferPipe()
+    },
+    {
+        id: 1,
+        name: 'MISSION Elon Musk',
+        descr: 'AMA (Q/A)',
+        logo: 'images/max.png',
+        messagePipe: new BufferPipe()
+    },
+    {
+        id: 2,
+        name: 'MISSION Startup Weekend',
+        descr: '2 Questions',
+        logo: 'images/adam.jpg',
+        messagePipe: new BufferPipe()
+    },
+    {
+        id: 3,
+        name: 'MISSION UAE',
+        descr: 'Expo 2020 New Ideas!',
+        logo: 'images/mike.png',
+        messagePipe: new BufferPipe()
+    }
+];
+
+var sockFunc = = function(socket) {
     socket.on('requestDataMissions', function(data, callback) {
         var missionsToSend = [];
         missions.forEach(function(mission) {
@@ -54,3 +102,5 @@ module.exports = function(socket) {
         }
     });
 }
+
+module.exports = sockFunc;
