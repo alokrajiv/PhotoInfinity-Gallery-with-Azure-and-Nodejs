@@ -58,9 +58,8 @@ module.exports = function (grunt) {
         }
     });
     grunt.registerTask('instantiateServer', 'Start a custom web server', function () {
-        var server = require('./app.js').listen(3001, function () {
-            grunt.log.writeln('Express server listening on port ' + server.address().port);
-        });
+        var server = require('./bin/www');
+        grunt.log.writeln('Express server listening on port ' + server.address().port);
     });
     grunt.registerTask('testServer', ['env:test','clean:localTestDB', 'shell:mongodb', 'instantiateServer']);
     grunt.registerTask('localServer', ['instantiateServer', 'keepalive']);
