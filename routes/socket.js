@@ -1,3 +1,5 @@
+var server = require('../server.js');
+var io = require('socket.io')(server);
 function BufferPipe() {
     this._maxSize = 10;
     this._storage = [];
@@ -46,7 +48,7 @@ var missions = [
     }
 ];
 
-var sockFunc = function(socket, io) {
+io.on('connection', function(socket, io) {
     socket.on('requestDataMissions', function(data, callback) {
         var missionsToSend = [];
         missions.forEach(function(mission) {
@@ -101,6 +103,5 @@ var sockFunc = function(socket, io) {
             }
         }
     });
-}
+});
 
-module.exports = sockFunc;

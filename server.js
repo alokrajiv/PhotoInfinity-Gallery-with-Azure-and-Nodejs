@@ -9,8 +9,7 @@ var BasicStrategy = require('passport-http').BasicStrategy;
 var app = express();
 var path = require('path');
 var server = require('http').Server(app);
-var io = require('socket.io')(server);
-
+require('./routes/socket.js');
 //app.set('port', port); //commented during socket.io implementation.
 
 // view engine setup
@@ -51,7 +50,7 @@ app.use('/category', require('./routes/category'));
 app.use('/user', require('./routes/user'));
 //app.use('/user', passport.authenticate('basic', { session: false }), require('./routes/user'));
 
-io.on('connection', require('./routes/socket.js')(socket, io));
+
 
 
 
