@@ -9,7 +9,9 @@ var BasicStrategy = require('passport-http').BasicStrategy;
 var app = express();
 var path = require('path');
 var server = require('http').Server(app);
-require('./routes/socket.js');
+require('./routes/socket.js')(server);
+
+
 //app.set('port', port); //commented during socket.io implementation.
 
 // view engine setup
