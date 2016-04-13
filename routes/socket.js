@@ -46,7 +46,7 @@ var missions = [
     }
 ];
 
-var sockFunc = function(socket) {
+var sockFunc = function(socket, io) {
     socket.on('requestDataMissions', function(data, callback) {
         var missionsToSend = [];
         missions.forEach(function(mission) {

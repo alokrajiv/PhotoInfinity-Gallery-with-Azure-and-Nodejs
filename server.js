@@ -51,7 +51,7 @@ app.use('/category', require('./routes/category'));
 app.use('/user', require('./routes/user'));
 //app.use('/user', passport.authenticate('basic', { session: false }), require('./routes/user'));
 
-io.on('connection', require('./routes/socket.js'));
+io.on('connection', require('./routes/socket.js')(socket, io));
 
 
 
