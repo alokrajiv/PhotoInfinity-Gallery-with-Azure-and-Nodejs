@@ -20,7 +20,7 @@ var upload = multer({ storage: multer.memoryStorage() });
 var fs = require('fs');
 
 
-var blobClient = azure.createBlobService("artifactstorage1", "whkQiGJDrzxEfnSJMDp7i5u1CSikwJBl1S0wPc+CT8syIcrXqf8qzXo1koCAYYDYR6OG6iWPTBurflDc1JWhYQ=="),
+var blobClient = azure.createBlobService("artifactstorage1", "GO_AWAY_EVIL_EYES!!"),
     containerName = 'taskcontainer';
 
 blobClient.createContainerIfNotExists(containerName, {
